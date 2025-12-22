@@ -61,6 +61,7 @@ export const fetchProduct=async (req,res)=>{
         const {page ,limit}=req.query;
         let skip=(page-1)*limit;
         const product=await Product.find()
+        .sort({createdAt:-1})
         .skip(skip)
         .limit(limit);  
         res.json({
